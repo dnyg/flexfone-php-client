@@ -1,0 +1,19 @@
+{
+    "name": "dnyg/flexfone-php-client",
+    "description": "A client for the Flexfone API",
+    "authors": [
+        {
+            "name": "Daniel Nygaard",
+            "email": "dn@ordrestyring.dk"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.1"
+    },
+    "autoload": {
+        "psr-4": {"Flexfone\\": "src/"}
+    }
+}
