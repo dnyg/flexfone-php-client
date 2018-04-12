@@ -1,17 +1,10 @@
 <?php
 namespace Flexfone\Models;
 
-class PhoneNumber
+class PhoneNumber extends BaseModel
 {
     public $Number;
     public $LineName;
     public $BelongsTo;
     public $GotoLocalNumber;
-
-    public function __construct($phoneNumber)
-    {
-        foreach ($phoneNumber as $key => $value) {
-            $this->{$key} = $value;
-        }
-    }
 }

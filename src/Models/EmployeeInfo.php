@@ -1,7 +1,7 @@
 <?php
 namespace Flexfone\Models;
 
-class EmployeeInfo
+class EmployeeInfo extends BaseModel
 {
     public const TYPE_DROPDOWN = 1;
     public const TYPE_EMPLOYEE = 2;
@@ -9,11 +9,4 @@ class EmployeeInfo
 
     public $Label;
     public $Value;
-
-    public function __construct($info)
-    {
-        foreach ($info as $key => $value) {
-            $this->{$key} = $value;
-        }
-    }
 }

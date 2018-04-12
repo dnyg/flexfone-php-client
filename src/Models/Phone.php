@@ -1,18 +1,26 @@
 <?php
 namespace Flexfone\Models;
 
-class Phone
+class Phone extends BaseModel
 {
+    /**
+     * @var int
+     */
     public $LocalNumber;
+
+    /**
+     * @var string
+     */
     public $Name;
     public $Type;
-    public $MAC;
-    public $BelongsTo;
 
-    public function __construct($phone)
-    {
-        foreach ($phone as $key => $value) {
-            $this->{$key} = $value;
-        }
-    }
+    /**
+     * @var string
+     */
+    public $MAC;
+
+    /**
+     * @var int
+     */
+    public $BelongsTo;
 }

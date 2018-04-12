@@ -1,18 +1,30 @@
 <?php
 namespace Flexfone\Models;
 
-class VariableCallflow
+class VariableCallflow extends BaseModel
 {
+    /**
+     * @var int
+     */
     public $Localnumber;
-    public $Name;
-    public $IsActive;
-    public $ActiveGoto;
-    public $InactiveGoto;
 
-    public function __construct($callflowData)
-    {
-        foreach ($callflowData as $key => $value) {
-            $this->{$key} = $value;
-        }
-    }
+    /**
+     * @var string
+     */
+    public $Name;
+
+    /**
+     * @var bool
+     */
+    public $IsActive;
+
+    /**
+     * @var int
+     */
+    public $ActiveGoto;
+
+    /**
+     * @var int
+     */
+    public $InactiveGoto;
 }

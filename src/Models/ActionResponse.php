@@ -1,14 +1,15 @@
 <?php
 namespace Flexfone\Models;
 
-class ActionResponse
+class ActionResponse extends BaseModel
 {
+    /**
+     * @var string
+     */
     public $Message;
-    public $Success;
 
-    public function __construct($response)
-    {
-        $this->Message = $response->Message;
-        $this->Success = $response->Success;
-    }
+    /**
+     * @var bool
+     */
+    public $Success;
 }

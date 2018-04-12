@@ -8,6 +8,9 @@ use GuzzleHttp\RequestOptions;
 
 class ApiClient
 {
+    /**
+     * @var WebClient
+     */
     protected $client;
 
     public function __construct(string $pbxId, string $apiKey)

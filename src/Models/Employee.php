@@ -3,13 +3,44 @@ namespace Flexfone\Models;
 
 class Employee
 {
+    /**
+     * @var int
+     */
     public $Localnumber;
+
+    /**
+     * @var string
+     */
     public $Name;
+
+    /**
+     * @var string
+     */
     public $Description;
+
+    /**
+     * @var string
+     */
     public $Email;
+
+    /**
+     * @var PhoneNumber[]
+     */
     public $Phonenumbers = [];
+
+    /**
+     * @var Phone[]
+     */
     public $Phones = [];
+
+    /**
+     * @var EmployeeInfo[]
+     */
     public $Info = [];
+
+    /**
+     * @var Department
+     */
     public $Department;
 
     public function __construct($employeeData)

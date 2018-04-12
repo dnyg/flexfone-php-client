@@ -1,9 +1,16 @@
 <?php
 namespace Flexfone\Models;
 
-class Department
+class Department extends BaseModel
 {
+    /**
+     * @var string
+     */
     public $Name;
+
+    /**
+     * @var string
+     */
     public $Street;
     public $Zipcode;
     public $City;
@@ -12,11 +19,4 @@ class Department
     public $Email;
     public $Ean;
     public $Iref;
-
-    public function __construct($department)
-    {
-        foreach ($department as $key => $value) {
-            $this->{$key} = $value;
-        }
-    }
 }
