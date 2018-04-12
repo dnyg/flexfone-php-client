@@ -39,4 +39,16 @@ class WebClient extends Client
             'handler' => $handler
         ]);
     }
+
+    public function get($uri, array $options = []) {
+        $response = parent::get($uri,$options)->getBody()->getContents();
+
+        return json_decode($response);
+    }
+
+    public function post(string $uri, array $options = []){
+        $response = parent::post($uri,$options)->getBody()->getContents();
+
+        return json_decode($response);
+    }
 }

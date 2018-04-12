@@ -26,11 +26,7 @@ class ApiClient
      */
     public function getEmployee(int $localNumber): Employee
     {
-        $response = $this->client->get('employee/' . $localNumber)
-            ->getBody()
-            ->getContents();
-
-        $employee = json_decode($response);
+        $employee = $this->client->get('employee/' . $localNumber);
 
         return new Employee($employee);
     }
@@ -42,44 +38,28 @@ class ApiClient
      */
     public function getEmployees(): array
     {
-        $response = $this->client->get('employee')
-            ->getBody()
-            ->getContents();
-
-        $employees = json_decode($response);
-
         return array_map(function ($employee) {
             return new Employee($employee);
-        }, $employees);
+        }, $this->client->get('employee'));
     }
 
     public function getVariableCallflows(): array
     {
-        $response = $this->client->get('Callflow')
-            ->getBody()
-            ->getContents();
-
-        $variableCallflows = json_decode($response);
-
         return array_map(function ($callflow) {
             return new VariableCallflow($callflow);
-        }, $variableCallflows);
+        }, $this->client->get('Callflow'));
     }
 
     public function setVariableCallflowState(int $localNumber, bool $state): ActionResponse
     {
-        $response = $this->client->post('Callflow/SetCallFlowState', [
+        $actionResponse = $this->client->post('Callflow/SetCallFlowState', [
             RequestOptions::QUERY => [
                 'localnumber' => $localNumber,
                 'active' => var_export($state, true)
             ]
-        ])
-            ->getBody()
-            ->getContents();
+        ]);
 
-        $setCallflowResponse = json_decode($response);
-
-        return new ActionResponse($setCallflowResponse);
+        return new ActionResponse($actionResponse);
     }
 
     public function startCall(int $employeeLocalNumber, string $phoneNumber, string $device = null)
@@ -95,26 +75,20 @@ class ApiClient
 
         $response = $this->client->post('Call', [
             RequestOptions::QUERY => $postData
-        ])
-            ->getBody()
-            ->getContents();
+        ]);
 
         return json_decode($response);
     }
 
     public function validateMyfoneUser(string $username, string $password): ActionResponse
     {
-        $response = $this->client->post('MyfoneUser/ValidateUser', [
+        $actionResponse = $this->client->post('MyfoneUser/ValidateUser', [
             RequestOptions::QUERY => [
                 'username' => $username,
                 'password' => $password
             ]
-        ])
-            ->getBody()
-            ->getContents();
+        ]);
 
-        $validationResult = json_decode($response);
-
-        return new ActionResponse($validationResult);
+        return new ActionResponse($actionResponse);
     }
 }
